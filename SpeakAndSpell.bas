@@ -323,3 +323,30 @@ End If
 
 End Function
 
+
+Function ZeroPad(text As String, Cnt As Integer) As String
+' :: Text is the string to pad  ::
+' :: Cnt is the length to pad to, for example  ZeroPad(12,3) would return a string '012' , Zeropad(12,8) would return '00000012' etc..  ::
+
+Dim StrLen As Integer, StrtString As String, Padded As String, LP As Integer
+
+StrLen = Len(Trim(text))  '::  CLEAR WHITESPACE IF LEADING SPACES/TABS  ETC.
+
+
+':: CONDITIONALLY PREFIX ZEROS IF LENGTH OF STRING IS LESS THAN LENGTH OF OUTPUT STRING SPECIFIED
+    If StrLen < Cnt Then
+    
+        For LP = 1 To Cnt - StrLen
+        
+            Padded = Padded & "0"
+        
+        Next LP
+    
+    End If
+
+ZeroPad = Padded & Trim(text)
+
+
+End Function
+
+
